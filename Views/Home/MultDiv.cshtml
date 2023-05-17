@@ -1,0 +1,263 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Навчання з Патроном";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: #0000CD;
+            color: yellow;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            width: 5%;
+            height: 10%;
+            border-radius: 5px;
+            font-size: 200%;
+            font-weight: 600;
+            font-style: Verdana;
+            text-align: center;
+            z-index: 1
+        }
+
+        .button2:hover {
+                background-color: #008CBA;
+                color: yellow;
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                width: 5%;
+                height: 10%;
+                border-radius: 5px;
+                font-size: 200%;
+                font-weight: 600;
+                font-style: Verdana;
+                text-align: center;
+                z-index: 1
+            }
+    </style>
+</head>
+<body style="background-color:#181735">
+    <div class="text-center">
+        <h1 class="display-4" style="color: white;"><strong>Множення і ділення</strong></h1>
+
+        <img src="~/Images/sticker.png" alt="Зображення Патрона" style="position: absolute; bottom: 10%; left: 5%; margin: 0; height: 50vh;  width:23.4vw;" />
+
+        <a class="button button2" id="btn1" OnClick="playSong()" style="left: 40%; top: 30%;">1</a>
+        <a class="button button2" id="btn2" OnClick="playSong()" style="left: 50%; top: 30%;">2</a>
+        <a class="button button2" id="btn3" OnClick="playSong()" style="left: 60%; top: 30%;">3</a>
+
+        <a class="button button2" id="btn4" OnClick="playSong()" style="left: 40%; top: 45%;">4</a>
+        <a class="button button2" id="btn5" OnClick="playSong()" style="left: 50%; top: 45%;">5</a>
+        <a class="button button2" id="btn6" OnClick="playSong()" style="left: 60%; top: 45%;">6</a>
+
+        <a class="button button2" id="btn7" OnClick="playSong()" style="left: 40%; top: 60%;">7</a>
+        <a class="button button2" id="btn8" OnClick="playSong()" style="left: 50%; top: 60%;">8</a>
+        <a class="button button2" id="btn9" OnClick="playSong()" style="left: 60%; top: 60%;">9</a>
+
+        <a class="button button2" id="btn0" OnClick="playSong()" style="left: 50%; top: 75%;">0</a>
+
+        <a class="button button2" id="btn_start" OnClick="easyLevel(); playSong();" style=" top: 45%; left: 70%; width: 25%; background-color:yellow; color: #008CBA;">Приклад</a>
+        <a class="button button2" id="btn_check" OnClick="check_example(); playSongCheck()" style="top: 60%; left: 70%; width: 25%; background-color:yellow; color: #008CBA;">Перевірити</a>
+        <a class="button button2" id="btn_next" OnClick="nextLevel(); playSong();" style="top: 75%; left: 70%; width: 25%; background-color:yellow; color: #008CBA;">Складніший приклад</a>
+        <a class="button button2" id="btn_clear" OnClick="playSongClear()" style="top: 20%; left: 70%; width: 15%; background-color:#008CBA; color: yellow;">Очистити</a>
+
+        <label for="example" id="number1" style="color: yellow; font-size: 45px;">1</label>
+        <label for="example" id="mul_div" style="color: yellow; font-size: 45px;">*</label>
+        <label for="example" id="number2" style="color: yellow; font-size: 45px;">2</label>
+
+        <label for="eqw" style="color: yellow; font-size: 45px;"> = </label>
+        <input type="text" id="example" name="example" style="color: #181735; width: 250px; height: 50px; top: 20%; font-size: 40px;"><br><br>
+
+        <audio id="song_ButtonNumbers">
+            <source src="/Sounds/sound1.mp3" type="audio/mpeg">
+
+        </audio>
+
+        <audio id="song_Clear">
+            <source src="/Sounds/clear.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="song_Check">
+            <source src="/Sounds/check.mp3" type="audio/mpeg">
+        </audio>
+
+    </div>
+    <script>
+
+        function playSong() {
+            var song = document.getElementById("song_ButtonNumbers");
+            song.play();
+        }
+
+        function playSongClear() {
+            var song = document.getElementById("song_Clear");
+            song.play();
+        }
+
+        function playSongCheck() {
+            var song = document.getElementById("song_Check");
+            song.play();
+        }
+        
+        function pauseSong() {
+            song.pause();
+        }
+
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+        var btn4 = document.getElementById("btn4");
+        var btn5 = document.getElementById("btn5");
+        var btn6 = document.getElementById("btn6");
+        var btn7 = document.getElementById("btn7");
+        var btn8 = document.getElementById("btn8");
+        var btn9 = document.getElementById("btn9");
+        var btn10 = document.getElementById("btn10");
+        var btn_clear = document.getElementById("btn_clear");
+        var btn_check = document.getElementById("btn_check");
+        var btn_next = document.getElementById("btn_next");
+        var btn_start = document.getElementById("btn_start");
+
+        btn1.addEventListener("click", function () {
+            document.getElementById("example").value += "1";
+        });
+
+        btn2.addEventListener("click", function () {
+            document.getElementById("example").value += "2";
+        });
+
+        btn3.addEventListener("click", function () {
+            document.getElementById("example").value += "3";
+        });
+
+        btn4.addEventListener("click", function () {
+            document.getElementById("example").value += "4";
+        });
+
+        btn5.addEventListener("click", function () {
+            document.getElementById("example").value += "5";
+        });
+
+        btn6.addEventListener("click", function () {
+            document.getElementById("example").value += "6";
+        });
+
+        btn7.addEventListener("click", function () {
+            document.getElementById("example").value += "7";
+        });
+
+        btn8.addEventListener("click", function () {
+            document.getElementById("example").value += "8";
+        });
+
+        btn9.addEventListener("click", function () {
+            document.getElementById("example").value += "9";
+        });
+
+        btn0.addEventListener("click", function () {
+            document.getElementById("example").value += "0";
+        });
+
+        btn_clear.addEventListener("click", function () {
+            document.getElementById("example").value = "";
+        });
+
+        btn_next.addEventListener("click", function () {
+            level = 2;
+            nextLevel();
+        });
+
+        btn_start.addEventListener("click", function () {
+            level = 1;
+            easyLevel();
+        });
+
+        var x = document.getElementById("number1");
+        var y = document.getElementById("number2");
+        var md = document.getElementById("mul_div");
+        var level = 1;
+
+        function easyLevel() {
+            if (level === 1) {
+                x.innerHTML = Math.floor(Math.random() * 11);
+                y.innerHTML = Math.floor(Math.random() * 11);
+            } else {
+                x.innerHTML = Math.floor(Math.random() * 41) + 10;
+                y.innerHTML = Math.floor(Math.random() * 41) + 10;
+            }
+
+            md.innerHTML = Math.random() < 0.5 ? "*" : "/";
+
+            if (md.innerHTML === "/") {
+                do {
+                    if (level === 1) {
+                        x.innerHTML = Math.floor(Math.random() * 11);
+                        y.innerHTML = Math.floor(Math.random() * 11);
+                    } else {
+                        x.innerHTML = Math.floor(Math.random() * 41) + 10;
+                        y.innerHTML = Math.floor(Math.random() * 41) + 10;
+                    }
+                } while (parseInt(x.innerHTML) % parseInt(y.innerHTML) !== 0 || parseInt(x.innerHTML) <= 0 || parseInt(x.innerHTML) < parseInt(y.innerHTML));
+            }
+        }
+
+        function nextLevel() {
+            level = 2;
+            x.innerHTML = Math.floor(Math.random() * 41) + 10;
+            y.innerHTML = Math.floor(Math.random() * 41) + 10;
+            md.innerHTML = Math.random() < 0.5 ? "*" : "/";
+
+            if (md.innerHTML === "/") {
+                do {
+                    x.innerHTML = Math.floor(Math.random() * 41) + 10;
+                    y.innerHTML = Math.floor(Math.random() * 41) + 10;
+                } while (parseInt(x.innerHTML) % parseInt(y.innerHTML) !== 0 || parseInt(x.innerHTML) <= 0 || parseInt(x.innerHTML) < parseInt(y.innerHTML));
+            }
+        }
+
+        function check_example() {
+            var expression = md.innerHTML === "*" ? parseInt(x.innerHTML) * parseInt(y.innerHTML) : parseInt(x.innerHTML) / parseInt(y.innerHTML);
+            var input = parseInt(document.getElementById("example").value);
+
+            if (expression === input) {
+                alert("Correct!");
+                easyLevel();
+                my_clear();
+
+                if (level === 2) {
+                    nextLevel();
+                }
+            } else {
+                alert("Incorrect!");
+                my_clear();
+            }
+        }
+
+        function my_clear() {
+            var input = document.getElementById("example").value = "";
+        }
+
+    </script>
+</body>
+</html>

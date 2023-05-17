@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Навчання з Патроном";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: #0000CD;
+            color: yellow;
+            position: absolute;
+            top: 45%;
+            left: 35%;
+            width: 30%;
+            height: 15%;
+            border-radius: 35px;
+            font-size: 200%;
+            font-style: Bradley Hand;
+            text-align: center;
+        }
+
+        .button2:hover {
+                background-color: #008CBA;
+                color: yellow;
+                position: absolute;
+                top: 45%;
+                left: 35%;
+                width: 30%;
+                height: 15%;
+                border-radius: 35px;
+                font-size: 200%;
+                font-style: Bradley Hand;
+                text-align: center;
+        }
+
+    </style>
+</head>
+<body style="background-color:#181735">
+    <div class="text-center">
+        <h1 class="display-4" style="color: white;"><strong>Навчання з Патроном</strong></h1>
+        <h4 style="color: yellow; "> Грайся та розвивайся! </h4>
+
+        <img src="~/Images/sticker2.png" alt="Зображення Патрона" style="position: absolute; bottom: 10%; left: 10%; margin: 0 auto; width:auto;" />
+
+        <a class="button button2" id="btn_addsub" OnClick="playSong()" asp-action="AddSubt" style="top: 30%;">Додавання і віднімання</a>
+        <a class="button button2" id="btn_multdiv" OnClick="playSong()" asp-action="MultDiv" style="top: 50%;">Множення і ділення</a>
+        <a class="button button2" id="btn_saper" OnClick="playSong()" asp-action="Registration" style="top: 70%;">Гра "Сапер"</a>
+
+        <audio id="song_Buttons">
+            <source src="/Sounds/sound1.mp3" type="audio/mpeg">
+        </audio>
+       
+    </div>
+    <script>
+
+        function playSong() {
+            var song = document.getElementById("song_Buttons");
+            song.play();
+        }
+
+        function pauseSong() {
+                song.pause();
+        }
+
+    </script>
+</body>
+</html>
