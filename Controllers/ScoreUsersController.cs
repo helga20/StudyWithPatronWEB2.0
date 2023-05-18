@@ -42,15 +42,6 @@ namespace StudyWithPatron.Controllers
         }
 
         //[HttpPost]
-        //public ActionResult<ScoreUsers> Create(ScoreUsers score_user)
-        //{
-        //    _context.ScoreUser.Add(score_user);
-        //    _context.SaveChanges();
-
-        //    return CreatedAtAction(nameof(Get), new { id = score_user.id }, score_user);
-        //}
-
-        //[HttpPost]
         //public async Task<ActionResult<ScoreUsers>> Create(ScoreUsers scoreUser)
         //{
         //    _context.ScoreUser.Add(scoreUser);
@@ -58,7 +49,7 @@ namespace StudyWithPatron.Controllers
 
         //    return CreatedAtAction(nameof(Get), new { id = scoreUser.id }, scoreUser);
         //}
-
+     
         [HttpPost]
         public async Task<ActionResult<ScoreUsers>> Create(ScoreUsers scoreUser, int score)
         {

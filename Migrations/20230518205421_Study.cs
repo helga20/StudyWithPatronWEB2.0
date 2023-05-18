@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StudyWithPatron.Migrations
 {
-    public partial class StudyPatron1 : Migration
+    public partial class Study : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,21 +46,6 @@ namespace StudyWithPatron.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ScoreBomb",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    id_user = table.Column<int>(type: "int", nullable: false),
-                    score_bomb = table.Column<int>(type: "int", nullable: false),
-                    id_bomb = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ScoreBomb", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -252,9 +237,6 @@ namespace StudyWithPatron.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "ScoreBomb");
 
             migrationBuilder.DropTable(
                 name: "ScoreUser");

@@ -12,8 +12,8 @@ using StudyWithPatron.Data;
 namespace StudyWithPatron.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230517174003_StudyPatron1")]
-    partial class StudyPatron1
+    [Migration("20230518205421_Study")]
+    partial class Study
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,28 +224,6 @@ namespace StudyWithPatron.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("StudyWithPatron.Models.ScoreBombs", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<int>("id_bomb")
-                        .HasColumnType("int");
-
-                    b.Property<int>("id_user")
-                        .HasColumnType("int");
-
-                    b.Property<int>("score_bomb")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ScoreBomb");
                 });
 
             modelBuilder.Entity("StudyWithPatron.Models.ScoreUsers", b =>

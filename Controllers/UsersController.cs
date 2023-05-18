@@ -84,8 +84,6 @@ namespace StudyWithPatron.Controllers
             return NoContent();
         }
     }
-
-
 }
 
 

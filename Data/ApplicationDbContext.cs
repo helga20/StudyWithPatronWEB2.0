@@ -11,8 +11,6 @@ namespace StudyWithPatron.Data
         //    optionsBuilder.UseLazyLoadingProxies();
         //}
 
-        public DbSet<ScoreBombs> ScoreBomb { get; set; }
-
         public DbSet<ScoreUsers> ScoreUser { get; set; }
 
         public DbSet<Users> User { get; set; }
