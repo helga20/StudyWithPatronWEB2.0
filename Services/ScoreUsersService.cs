@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using StudyWithPatron.Models;
 using StudyWithPatron.Services.Interfaces;
-using StudyWithPatron.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +17,19 @@ namespace StudyWithPatron.Services
 
         public ScoreUsersService(IMapper mapper, ApplicationDbContext context) : base(mapper, context) { }
 
-        public IEnumerable<ScoreUsersDto> GetScoreUsers()
+        public IEnumerable<ScoreUsers> GetScoreUsers()
         {
-            List<ScoreUsersDto> score_users = new List<ScoreUsersDto>();
-            score_users = _mapper.Map<List<ScoreUsersDto>>(_context.ScoreUser.ToList());
+            List<ScoreUsers> score_users = new List<ScoreUsers>();
+            score_users = _mapper.Map<List<ScoreUsers>>(_context.ScoreUser.ToList());
             return score_users;
         }
 
-        public ScoreUsersDto GetById(int id_user)
+        public ScoreUsers GetById(int id_user)
         {
-            return _mapper.Map<ScoreUsersDto>(_context.ScoreUser.First(c => c.id_user == id_user));
+            return _mapper.Map<ScoreUsers>(_context.ScoreUser.First(c => c.id_user == id_user));
         }
 
-        public ScoreUsersDto Create(ScoreUsersDto score_users)
+        public ScoreUsers Create(ScoreUsers score_users)
         {
             if (score_users == null)
             {
@@ -42,7 +41,7 @@ namespace StudyWithPatron.Services
             return score_users;
         }
 
-        public void Update(ScoreUsersDto score_users)
+        public void Update(ScoreUsers score_users)
         {
             if (score_users == null)
             {
@@ -55,7 +54,7 @@ namespace StudyWithPatron.Services
 
         public void DeleteById(int id_user)
         {
-            ScoreUsersDto score_users = GetById(id_user);
+            ScoreUsers score_users = GetById(id_user);
             _context.User.Remove(_mapper.Map<Users>(score_users));
             _context.SaveChanges();
         }

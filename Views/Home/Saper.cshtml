@@ -286,6 +286,8 @@
                     hearts.innerHTML = "";
                     saveScore();
                     alert("Гра закінчилася! Ви програли\nКількість правильних відповідей: " + score);
+
+                    window.location.href = "/Home";
                 }
 
             }
@@ -335,7 +337,7 @@
             console.log(seconds);
             if (seconds <= 0) {
                 clearInterval(countdown);
-                console.log("Час вийшов!");
+                console.log("Time's up!");
             }
         }, 1000);
 
@@ -345,7 +347,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ score: 4 })
+                body: JSON.stringify({ score: score })
             })
                 .then(response => {
                     if (response.ok) {

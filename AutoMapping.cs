@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
 using StudyWithPatron.Models;
-using StudyWithPatron.Dto;
 namespace StudyWithPatron
 {
     public class AutoMapping : Profile
     {
         public AutoMapping()
         {
-            CreateMap<Users, UsersDto>();
-            CreateMap<UsersDto, Users>();
+            CreateMap<Users, Users>();
+            CreateMap<Users, Users>();
 
-            CreateMap<ScoreUsers, ScoreUsersDto>();
-            CreateMap<ScoreUsersDto, ScoreUsers>();
+            CreateMap<ScoreUsers, ScoreUsers>();
+            CreateMap<ScoreUsers, ScoreUsers>();
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿using StudyWithPatron.Dto;
-
+﻿using StudyWithPatron.Models;
 
 namespace StudyWithPatron.Services.Interfaces
 {
     public interface IScoreUsersService
     {
-        IEnumerable<ScoreUsersDto> GetScoreUsers();
+        IEnumerable<ScoreUsers> GetScoreUsers();
 
-        ScoreUsersDto GetById(int id_user);
+        ScoreUsers GetById(int id_user);
 
-        ScoreUsersDto Create(ScoreUsersDto score_users);
+        ScoreUsers Create(ScoreUsers score_users);
 
-        void Update(ScoreUsersDto score_users);
+        void Update(ScoreUsers score_users);
 
         void DeleteById(int id_user);
 

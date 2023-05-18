@@ -49,11 +49,31 @@ namespace StudyWithPatron.Controllers
         [HttpPost]
         public ActionResult<Users> Create(Users user)
         {
-            _context.User.Add(user);
-            _context.SaveChanges();
+            //    _context.User.Add(user);
+            //    _context.SaveChanges();
+
+            //    return CreatedAtAction(nameof(Get), new { id = user.id }, user);
+
+            _context.User.Add(new Users(user.login));
+            _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(Get), new { id = user.id }, user);
         }
+
+        //[HttpPost]
+        //public IActionResult Create([FromBody] string pseudonym)
+        //{
+        //    if (string.IsNullOrEmpty(pseudonym))
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    var user = new Users(pseudonym) { login = pseudonym };
+        //    _context.Users.Add(user);
+        //    _context.SaveChanges();
+
+        //    return Ok();
+        //}
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, Users user)

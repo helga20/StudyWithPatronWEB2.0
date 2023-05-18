@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using StudyWithPatron.Services.Interfaces;
 using StudyWithPatron.Models;
-using StudyWithPatron.Dto;
 using StudyWithPatron.Data;
 
 namespace StudyWithPatron.Services
@@ -13,19 +12,19 @@ namespace StudyWithPatron.Services
 
         public UsersService(IMapper mapper, ApplicationDbContext context) :base(mapper, context) {}
 
-        public IEnumerable<UsersDto> GetUsers()
+        public IEnumerable<Users> GetUsers()
         {
-            List<UsersDto>users = new List<UsersDto>();
-            users = _mapper.Map<List<UsersDto>>(_context.User.ToList());
+            List<Users> users = new List<Users>();
+            users = _mapper.Map<List<Users>>(_context.User.ToList());
             return users;
         }
 
-        public UsersDto GetById(int id)
+        public Users GetById(int id)
         {
-            return _mapper.Map<UsersDto>(_context.User.First(c => c.id == id));   
+            return _mapper.Map<Users>(_context.User.First(c => c.id == id));   
         }
 
-        public UsersDto Create(UsersDto user)
+        public Users Create(Users user)
         {
             if (user == null)
             {
@@ -42,7 +41,7 @@ namespace StudyWithPatron.Services
             return user;
         }
 
-        public void Update(UsersDto user)
+        public void Update(Users user)
         {
             if (user == null)
             {
@@ -55,7 +54,7 @@ namespace StudyWithPatron.Services
 
         public void DeleteById(int id_user)
         {
-            UsersDto user = GetById(id_user);
+            Users user = GetById(id_user);
             _context.User.Remove(_mapper.Map<Users>(user));
             _context.SaveChanges();
         }

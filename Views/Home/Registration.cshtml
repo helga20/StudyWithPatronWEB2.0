@@ -75,14 +75,39 @@
     </div>
 
     <script>
+        var pseudonym = document.getElementById("example").value;
 
         function validateForm() {
-            var pseudonym = document.getElementById("example").value;
-            if (pseudonym === "") {
+            var pseudonym1 = document.getElementById("example").value;
+            if (pseudonym1 === "") {
+
                 alert("Поле псевдоніма не може бути порожнім!");
             return false;
         }
     }
+
+        function saveLogin() {
+            fetch('/Users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pseudonym: pseudonym })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Результат успішного виклику POST-методу
+                        console.log('Login saved successfully');
+                    } else {
+                        // Обробка помилки при виклику POST-методу
+                        console.error('Error saving login');
+                    }
+                })
+                .catch(error => {
+                    // Обробка помилки з'єднання або виконання запиту
+                    console.error('Request failed', error);
+                });
+        }
 
     </script>
 

@@ -1,19 +1,18 @@
-﻿using StudyWithPatron.Dto;
+﻿using StudyWithPatron.Models;
 
 namespace StudyWithPatron.Services.Interfaces
 {
     public interface IUsersService
     {
-        IEnumerable<UsersDto> GetUsers();
+        IEnumerable<Users> GetUsers();
 
-        UsersDto GetById(int id);
+        Users GetById(int id);
 
-        UsersDto Create(UsersDto user);
+        Users Create(Users user);
 
-        void Update(UsersDto user);
+        void Update(Users user);
 
         void DeleteById(int id_user);
-
     }
 }
 
