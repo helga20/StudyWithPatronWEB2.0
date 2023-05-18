@@ -272,12 +272,12 @@
             var input = parseInt(document.getElementById("example").value);
             
             if (expression === input) {
-                alert("Correct!");
+                //alert("Правильно!");
                 score += 1;
                 easyLevel();
                 my_clear();
             } else {
-                alert("Incorrect!");
+                alert("Неправильно!");
                 my_clear();
                 var hearts = document.getElementById("hearts");
                 if (hearts.innerHTML.length > 1) {
@@ -335,7 +335,7 @@
             console.log(seconds);
             if (seconds <= 0) {
                 clearInterval(countdown);
-                console.log("Time's up!");
+                console.log("Час вийшов!");
             }
         }, 1000);
 
@@ -391,7 +391,7 @@
             };
         }
 
-        setInterval(createBall, 10000);
+        setInterval(createBall, 3000);
 
     </script>
 </body>
